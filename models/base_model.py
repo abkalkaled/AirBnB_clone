@@ -5,6 +5,7 @@ import uuid
 from datetime import datetime
 from models import storage
 
+
 class BaseModel:
     """Defines super class that handles objects"""
     def __init__(self, *args, **kwargs):
@@ -25,7 +26,8 @@ class BaseModel:
 
     def __str__(self):
         """Prints class name, id, and dictionary of class"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}"\
+            .format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """Updates the attribute 'updated_at' to the current time"""
@@ -34,11 +36,10 @@ class BaseModel:
             storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing all key/value pairs of an instance"""
+        """Returns a dict containing all key/value pairs of an instance"""
         obj_dict = self.__dict__.copy()
         for key, value in self.__dict__.items():
             if key == 'created_at' or key == 'updated_at':
                 obj_dict[key] = value.isoformat()
 
         return obj_dict
-
