@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Package handler"""
+"""handles p[ackage"""
 from models.engine.file_storage import FileStorage
 
 storage = FileStorage()
